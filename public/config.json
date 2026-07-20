@@ -1,0 +1,56 @@
+{
+  "brand": "Goodbox",
+  "tagline": "Seus atalhos essenciais, reunidos em um só lugar.",
+  "avatarText": "GB",
+  "avatarImage": "",
+  "credit": "© Goodbox",
+  "links": [
+    {
+      "title": "Site oficial",
+      "description": "Conheça a Goodbox",
+      "url": "https://example.com",
+      "icon": "globe"
+    },
+    {
+      "title": "WhatsApp",
+      "description": "Fale com nosso atendimento",
+      "url": "https://wa.me/5500000000000",
+      "icon": "whatsapp"
+    },
+    {
+      "title": "Catálogo",
+      "description": "Produtos e novidades",
+      "url": "https://example.com/catalogo",
+      "icon": "box"
+    },
+    {
+      "title": "Instagram",
+      "description": "@goodbox",
+      "url": "https://instagram.com/",
+      "icon": "instagram"
+    },
+    {
+      "title": "E-mail",
+      "description": "contato@goodbox.com.br",
+      "url": "mailto:contato@goodbox.com.br",
+      "icon": "mail"
+    }
+  ],
+  "socials": [
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/",
+      "icon": "instagram"
+    },
+    {
+      "label": "WhatsApp",
+      "url": "https://wa.me/5500000000000",
+      "icon": "whatsapp"
+    },
+    {
+      "label": "E-mail",
+      "url": "mailto:contato@goodbox.com.br",
+      "icon": "mail"
+    }
+  ]
+}
