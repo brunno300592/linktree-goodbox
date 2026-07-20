@@ -34,23 +34,10 @@ async function loadConfig() {
 
 function renderProfile(config) {
   const brand = document.getElementById("brand");
-  const tagline = document.getElementById("tagline");
-  const avatar = document.getElementById("avatar");
   const credit = document.getElementById("credit");
 
   brand.textContent = config.brand || "GoodBox";
   document.title = `${config.brand || "GoodBox"} · Links`;
-
-  if (config.tagline) {
-    tagline.textContent = config.tagline;
-  }
-
-  if (config.avatarImage) {
-    avatar.innerHTML = `<img src="${escapeHtml(config.avatarImage)}" alt="" />`;
-  } else if (config.avatarText) {
-    avatar.textContent = config.avatarText;
-  }
-
   credit.textContent = config.credit || "";
 }
 
@@ -96,6 +83,4 @@ try {
   renderSocials(config.socials);
 } catch (error) {
   console.error(error);
-  document.getElementById("tagline").textContent =
-    "Erro ao carregar os links. Verifique o arquivo config.json.";
 }
