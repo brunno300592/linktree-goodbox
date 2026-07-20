@@ -47,11 +47,16 @@ Abra: http://localhost:8080
 
 1. No Coolify, crie um novo recurso **Public Repository** (ou Private, se preferir).
 2. Conecte este repositório do GitHub.
-3. Coolify detecta o `Dockerfile` automaticamente.
-4. Porta do container: **80**
-5. Faça o deploy e aponte o domínio desejado.
+3. Build Pack: **Dockerfile** (não Nixpacks).
+4. **Ports Exposes**: `80` (obrigatório — se estiver 3000/8080, dá Bad Gateway).
+5. Domínio: `linktree.goodbox.com.br`
+6. Faça o deploy.
 
-Não é necessário build pack, Node ou banco — é só Nginx servindo arquivos estáticos.
+Não precisa de variáveis de ambiente, Node ou banco — é Nginx servindo arquivos estáticos.
+
+### Bad Gateway?
+
+No Coolify, abra o app → **Configuration → Network** e confirme **Ports Exposes = 80**. Depois **Redeploy**. Veja também os logs do container: se o build falhou ou o container parou, o proxy devolve Bad Gateway.
 
 ## Estrutura
 
