@@ -1,10 +1,16 @@
 {
-  "brand": "Goodbox",
-  "tagline": "Seus atalhos essenciais, reunidos em um só lugar.",
-  "avatarText": "GB",
-  "avatarImage": "",
-  "credit": "© Goodbox",
+  "brand": "GoodBox",
+  "tagline": "Kits onboarding e brindes corporativos",
+  "avatarText": "",
+  "avatarImage": "logo-mark.svg",
+  "credit": "© GoodBox",
   "links": [
+    {
+      "title": "Site oficial",
+      "description": "goodbox.com.br",
+      "url": "https://goodbox.com.br",
+      "icon": "globe"
+    },
     {
       "title": "WhatsApp Comercial",
       "description": "916004685",
@@ -31,7 +37,7 @@
     },
     {
       "title": "LinkedIn",
-      "description": "Goodbox Oficial",
+      "description": "GoodBox Oficial",
       "url": "https://www.linkedin.com/company/goodboxoficial",
       "icon": "linkedin"
     }

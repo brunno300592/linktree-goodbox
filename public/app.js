@@ -38,8 +38,8 @@ function renderProfile(config) {
   const avatar = document.getElementById("avatar");
   const credit = document.getElementById("credit");
 
-  brand.textContent = config.brand || "Goodbox";
-  document.title = `${config.brand || "Goodbox"} · Links`;
+  brand.textContent = config.brand || "GoodBox";
+  document.title = `${config.brand || "GoodBox"} · Links`;
 
   if (config.tagline) {
     tagline.textContent = config.tagline;
@@ -47,8 +47,8 @@ function renderProfile(config) {
 
   if (config.avatarImage) {
     avatar.innerHTML = `<img src="${escapeHtml(config.avatarImage)}" alt="" />`;
-  } else {
-    avatar.textContent = config.avatarText || "GB";
+  } else if (config.avatarText) {
+    avatar.textContent = config.avatarText;
   }
 
   credit.textContent = config.credit || "";
@@ -59,7 +59,7 @@ function renderLinks(links = []) {
   root.innerHTML = links
     .map(
       (item) => `
-      <a class="link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
+      <a class="link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" data-icon="${escapeHtml(item.icon || "link")}">
         <span class="link-icon">${icon(item.icon)}</span>
         <span class="link-copy">
           <span class="link-title">${escapeHtml(item.title)}</span>
