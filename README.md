@@ -63,6 +63,7 @@ No Coolify, abra o app → **Configuration → Network** e confirme **Ports Expo
 O site já inclui:
 
 - `robots.txt` e `sitemap.xml`
+- `llms.txt` (orientação para agentes de IA / Lighthouse Agentic)
 - Meta tags (description, canonical, Open Graph, Twitter)
 - Dados estruturados JSON-LD (Organization, WebSite, WebPage, ItemList)
 - Manifest PWA e imagem de compartilhamento (`og-image.png`)
@@ -89,6 +90,7 @@ Campos SEO opcionais em `config.json`: `tagline`, `seoTitle`, `seoDescription`, 
     ├── app.js
     ├── config.json   ← edite aqui
     ├── robots.txt
+    ├── llms.txt
     ├── sitemap.xml
     ├── site.webmanifest
     └── og-image.png

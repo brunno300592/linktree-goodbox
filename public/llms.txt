@@ -1,0 +1,23 @@
+# GoodBox
+
+> Página de links oficiais da GoodBox — kits onboarding e brindes corporativos. Canais de contato, site e redes sociais.
+
+A GoodBox oferece kits de onboarding e brindes corporativos. Esta página reúne os atalhos oficiais para o site e atendimento via WhatsApp (Comercial, Financeiro e Logística).
+
+## Links oficiais
+
+- [Página de links GoodBox](https://linktree.goodbox.com.br/): Hub com todos os canais oficiais
+- [Site oficial](https://goodbox.com.br/): Site institucional da GoodBox
+- [WhatsApp Comercial](https://wa.me/5511916004685): Atendimento comercial (+55 11 91600-4685)
+- [WhatsApp Financeiro](https://wa.me/5511917899399): Setor financeiro (+55 11 91789-9399)
+- [WhatsApp Logística](https://wa.me/5511915880403): Logística e entregas (+55 11 91588-0403)
+
+## Redes sociais
+
+- [Instagram @goodboxoficial](https://www.instagram.com/goodboxoficial): Conteúdo e novidades da marca
+- [LinkedIn GoodBox](https://www.linkedin.com/company/goodboxoficial): Perfil corporativo no LinkedIn
+
+## Optional
+
+- [Sitemap](https://linktree.goodbox.com.br/sitemap.xml): Mapa de URLs para indexação
+- [robots.txt](https://linktree.goodbox.com.br/robots.txt): Regras para crawlers
