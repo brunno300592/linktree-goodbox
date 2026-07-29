@@ -57,13 +57,33 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <link rel="preload" href="/logo-branco.svg" as="image" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <link rel="stylesheet" href="/styles.css" />
+    <style>
+      /* Paint imediato (FCP) antes do CSS externo */
+      html,
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #6b4e9b;
+        color: #fff;
+        font-family: system-ui, sans-serif;
+      }
+    </style>
 
     <script type="application/ld+json" id="structured-data">
       {
@@ -184,6 +204,8 @@
           alt="GoodBox — kits onboarding e brindes corporativos"
           width="240"
           height="47"
+          fetchpriority="high"
+          decoding="async"
           itemprop="image"
         />
         <h1 class="brand visually-hidden" id="brand">GoodBox</h1>

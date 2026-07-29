@@ -5,7 +5,7 @@
   --surface: rgba(255, 255, 255, 0.12);
   --surface-hover: rgba(255, 255, 255, 0.2);
   --ink: #ffffff;
-  --ink-muted: rgba(255, 255, 255, 0.72);
+  --ink-muted: rgba(255, 255, 255, 0.86);
   --line: rgba(255, 255, 255, 0.14);
   --accent: #784f9b;
   --accent-pink: #e04592;
@@ -71,7 +71,6 @@ body {
 
 .profile {
   text-align: center;
-  animation: rise 0.7s ease both;
 }
 
 .logo {
@@ -111,17 +110,7 @@ body {
     background 0.22s ease,
     border-color 0.22s ease,
     box-shadow 0.22s ease;
-  animation: rise 0.65s ease both;
 }
-
-.link:nth-child(1) { animation-delay: 0.08s; }
-.link:nth-child(2) { animation-delay: 0.14s; }
-.link:nth-child(3) { animation-delay: 0.2s; }
-.link:nth-child(4) { animation-delay: 0.26s; }
-.link:nth-child(5) { animation-delay: 0.32s; }
-.link:nth-child(6) { animation-delay: 0.38s; }
-.link:nth-child(7) { animation-delay: 0.44s; }
-.link:nth-child(8) { animation-delay: 0.5s; }
 
 .link:hover,
 .link:focus-visible {
@@ -196,8 +185,6 @@ body {
 
 .footer {
   text-align: center;
-  animation: rise 0.8s ease both;
-  animation-delay: 0.45s;
 }
 
 .socials {
@@ -242,14 +229,37 @@ body {
   color: var(--ink-muted);
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
+/* Entrada sem opacity:0 — evita NO_FCP no Lighthouse/Google */
+@media (prefers-reduced-motion: no-preference) {
+  .profile {
+    animation: rise 0.55s ease both;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .link {
+    animation: rise 0.5s ease both;
+  }
+
+  .link:nth-child(1) { animation-delay: 0.04s; }
+  .link:nth-child(2) { animation-delay: 0.08s; }
+  .link:nth-child(3) { animation-delay: 0.12s; }
+  .link:nth-child(4) { animation-delay: 0.16s; }
+  .link:nth-child(5) { animation-delay: 0.2s; }
+  .link:nth-child(6) { animation-delay: 0.24s; }
+  .link:nth-child(7) { animation-delay: 0.28s; }
+  .link:nth-child(8) { animation-delay: 0.32s; }
+
+  .footer {
+    animation: rise 0.55s ease both;
+    animation-delay: 0.2s;
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(12px);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }
 
