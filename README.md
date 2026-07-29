@@ -58,6 +58,25 @@ Não precisa de variáveis de ambiente, Node ou banco — é Nginx servindo arqu
 
 No Coolify, abra o app → **Configuration → Network** e confirme **Ports Exposes = 80**. Depois **Redeploy**. Veja também os logs do container: se o build falhou ou o container parou, o proxy devolve Bad Gateway.
 
+## SEO e Google
+
+O site já inclui:
+
+- `robots.txt` e `sitemap.xml`
+- Meta tags (description, canonical, Open Graph, Twitter)
+- Dados estruturados JSON-LD (Organization, WebSite, WebPage, ItemList)
+- Manifest PWA e imagem de compartilhamento (`og-image.png`)
+
+**Para o Google indexar:**
+
+1. Abra o [Google Search Console](https://search.google.com/search-console)
+2. Adicione a propriedade `https://linktree.goodbox.com.br`
+3. Valide por DNS (domínio goodbox.com.br) ou tag HTML
+4. Envie o sitemap: `https://linktree.goodbox.com.br/sitemap.xml`
+5. Use **Inspeção de URL** em `https://linktree.goodbox.com.br/` e peça indexação
+
+Campos SEO opcionais em `config.json`: `tagline`, `seoTitle`, `seoDescription`, `canonicalUrl`.
+
 ## Estrutura
 
 ```
@@ -68,5 +87,9 @@ No Coolify, abra o app → **Configuration → Network** e confirme **Ports Expo
     ├── index.html
     ├── styles.css
     ├── app.js
-    └── config.json   ← edite aqui
+    ├── config.json   ← edite aqui
+    ├── robots.txt
+    ├── sitemap.xml
+    ├── site.webmanifest
+    └── og-image.png
 ```

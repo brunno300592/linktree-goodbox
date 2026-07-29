@@ -81,6 +81,14 @@ body {
   margin: 0 auto;
 }
 
+.tagline {
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  letter-spacing: 0.01em;
+}
+
 .links {
   display: flex;
   flex-direction: column;

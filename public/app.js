@@ -1,3 +1,5 @@
+const SITE_ORIGIN = "https://linktree.goodbox.com.br";
+
 const ICONS = {
   globe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 3.8 5.8 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-5.8-3.8-9S9.5 5.8 12 3z"/></svg>`,
   whatsapp: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.21 8.21 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74 1.49.64 1.89.7 2.56.59.42-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>`,
@@ -24,21 +26,147 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function setMeta(selector, attribute, value) {
+  if (!value) return;
+  const el = document.querySelector(selector);
+  if (el) el.setAttribute(attribute, value);
+}
+
 async function loadConfig() {
-  const response = await fetch("./config.json", { cache: "no-store" });
+  const response = await fetch("/config.json", { cache: "no-store" });
   if (!response.ok) {
     throw new Error("Não foi possível carregar config.json");
   }
   return response.json();
 }
 
-function renderProfile(config) {
-  const brand = document.getElementById("brand");
+function phoneFromWhatsAppUrl(url = "") {
+  const digits = String(url).replace(/\D/g, "");
+  if (digits.length < 10) return null;
+  if (digits.startsWith("55") && digits.length >= 12) {
+    return `+${digits.slice(0, 2)}-${digits.slice(2, 4)}-${digits.slice(4, 9)}-${digits.slice(9)}`;
+  }
+  return `+${digits}`;
+}
+
+function contactTypeFromTitle(title = "") {
+  const value = title.toLowerCase();
+  if (value.includes("comercial")) return "sales";
+  if (value.includes("financeiro")) return "billing support";
+  if (value.includes("logística") || value.includes("logistica")) {
+    return "customer support";
+  }
+  return "customer service";
+}
+
+function updateSeo(config) {
+  const brand = config.brand || "GoodBox";
+  const title =
+    config.seoTitle || `${brand} | Links oficiais — WhatsApp, site e redes`;
+  const description =
+    config.seoDescription ||
+    `Links oficiais da ${brand}: site, WhatsApp e redes sociais. Kits onboarding e brindes corporativos.`;
+  const canonical = config.canonicalUrl || `${SITE_ORIGIN}/`;
+  const tagline =
+    config.tagline || "Kits onboarding e brindes corporativos";
+
+  document.title = title;
+  setMeta('meta[name="description"]', "content", description);
+  setMeta('meta[property="og:title"]', "content", `${brand} | Links oficiais`);
+  setMeta('meta[property="og:description"]', "content", description);
+  setMeta('meta[property="og:url"]', "content", canonical);
+  setMeta('meta[name="twitter:title"]', "content", `${brand} | Links oficiais`);
+  setMeta('meta[name="twitter:description"]', "content", description);
+  setMeta('link[rel="canonical"]', "href", canonical);
+
+  const brandEl = document.getElementById("brand");
+  const taglineEl = document.getElementById("tagline");
   const credit = document.getElementById("credit");
 
-  brand.textContent = config.brand || "GoodBox";
-  document.title = `${config.brand || "GoodBox"} · Links`;
+  brandEl.textContent = brand;
+  if (taglineEl) taglineEl.textContent = tagline;
   credit.textContent = config.credit || "";
+
+  updateStructuredData(config, { title, description, canonical, tagline });
+}
+
+function updateStructuredData(config, seo) {
+  const node = document.getElementById("structured-data");
+  if (!node) return;
+
+  const brand = config.brand || "GoodBox";
+  const links = config.links || [];
+  const socials = (config.socials || []).map((item) => item.url).filter(Boolean);
+  const contactPoints = links
+    .filter((item) => String(item.url || "").includes("wa.me"))
+    .map((item) => {
+      const telephone = phoneFromWhatsAppUrl(item.url);
+      if (!telephone) return null;
+      return {
+        "@type": "ContactPoint",
+        telephone,
+        contactType: contactTypeFromTitle(item.title),
+        areaServed: "BR",
+        availableLanguage: ["Portuguese"],
+      };
+    })
+    .filter(Boolean);
+
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://goodbox.com.br/#organization",
+        name: brand,
+        url: "https://goodbox.com.br",
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_ORIGIN}/logo-branco.svg`,
+        },
+        description: seo.tagline,
+        sameAs: socials,
+        contactPoint: contactPoints,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_ORIGIN}/#website`,
+        url: seo.canonical,
+        name: `${brand} — Links oficiais`,
+        description: `Página de links oficiais da ${brand}.`,
+        inLanguage: "pt-BR",
+        publisher: { "@id": "https://goodbox.com.br/#organization" },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_ORIGIN}/#webpage`,
+        url: seo.canonical,
+        name: seo.title,
+        description: seo.description,
+        isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+        about: { "@id": "https://goodbox.com.br/#organization" },
+        inLanguage: "pt-BR",
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE_ORIGIN}/og-image.png`,
+        },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${SITE_ORIGIN}/#links`,
+        name: `Links oficiais ${brand}`,
+        numberOfItems: links.length,
+        itemListElement: links.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.title,
+          url: item.url,
+        })),
+      },
+    ],
+  };
+
+  node.textContent = JSON.stringify(data);
 }
 
 function renderLinks(links = []) {
@@ -68,7 +196,7 @@ function renderSocials(socials = []) {
   root.innerHTML = socials
     .map(
       (item) => `
-      <a class="social" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.label || item.icon)}">
+      <a class="social" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer me" aria-label="${escapeHtml(item.label || item.icon)}">
         ${icon(item.icon)}
       </a>
     `,
@@ -78,7 +206,7 @@ function renderSocials(socials = []) {
 
 try {
   const config = await loadConfig();
-  renderProfile(config);
+  updateSeo(config);
   renderLinks(config.links);
   renderSocials(config.socials);
 } catch (error) {

@@ -1,0 +1,8 @@
+# https://linktree.goodbox.com.br/robots.txt
+User-agent: *
+Allow: /
+
+# Bloquear apenas arquivos internos sem valor de busca
+Disallow: /config.json
+
+Sitemap: https://linktree.goodbox.com.br/sitemap.xml
