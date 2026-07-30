@@ -56,6 +56,7 @@ function contactTypeFromTitle(title = "") {
   if (value.includes("logística") || value.includes("logistica")) {
     return "customer support";
   }
+  if (value.includes("gerente")) return "customer service";
   return "customer service";
 }
 
