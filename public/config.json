@@ -2,7 +2,7 @@
   "brand": "GoodBox",
   "tagline": "Kits onboarding e brindes corporativos",
   "seoTitle": "GoodBox | Links oficiais — WhatsApp, site e redes",
-  "seoDescription": "Links oficiais da GoodBox: site, WhatsApp Comercial, Financeiro, Logística e Gerente, Instagram e LinkedIn. Kits onboarding e brindes corporativos.",
+  "seoDescription": "Links oficiais da GoodBox: site, WhatsApp Comercial, Comercial 2, Financeiro, Logística e Gerente, Instagram e LinkedIn. Kits onboarding e brindes corporativos.",
   "canonicalUrl": "https://linktree.goodbox.com.br/",
   "credit": "© GoodBox",
   "links": [
@@ -16,6 +16,12 @@
       "title": "Comercial",
       "description": "+55 11 91600-4685",
       "url": "https://wa.me/5511916004685",
+      "icon": "whatsapp"
+    },
+    {
+      "title": "Comercial 2",
+      "description": "+55 11 91686-2939",
+      "url": "https://wa.me/5511916862939",
       "icon": "whatsapp"
     },
     {
