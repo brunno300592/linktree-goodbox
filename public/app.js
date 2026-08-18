@@ -10,6 +10,7 @@ const ICONS = {
   link: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L10.7 5.23"/><path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07l1.41-1.41"/></svg>`,
   map: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>`,
   phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v2.2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 1h2.2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.1 8.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z"/></svg>`,
+  truck: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v11H3z"/><path d="M14 10h4.2L21 13.2V18h-7z"/><circle cx="7.5" cy="18" r="1.7"/><circle cx="17.5" cy="18" r="1.7"/></svg>`,
   arrow: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>`,
 };
 
@@ -170,12 +171,16 @@ function updateStructuredData(config, seo) {
   node.textContent = JSON.stringify(data);
 }
 
+function variantClass(variant) {
+  return variant === "action" ? " link--action" : "";
+}
+
 function renderLinks(links = []) {
   const root = document.getElementById("links");
   root.innerHTML = links
     .map(
       (item) => `
-      <a class="link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" data-icon="${escapeHtml(item.icon || "link")}">
+      <a class="link${variantClass(item.variant)}" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" data-icon="${escapeHtml(item.icon || "link")}">
         <span class="link-icon">${icon(item.icon)}</span>
         <span class="link-copy">
           <span class="link-title">${escapeHtml(item.title)}</span>

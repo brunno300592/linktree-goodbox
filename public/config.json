@@ -2,7 +2,7 @@
   "brand": "GoodBox",
   "tagline": "Kits onboarding e brindes corporativos",
   "seoTitle": "GoodBox | Links oficiais — WhatsApp, site e redes",
-  "seoDescription": "Links oficiais da GoodBox: site, WhatsApp Comercial, Comercial 2, Financeiro, Logística e Gerente, Instagram e LinkedIn. Kits onboarding e brindes corporativos.",
+  "seoDescription": "Links oficiais da GoodBox: site, rastreio de pedidos, WhatsApp Comercial, Comercial 2, Financeiro, Logística e Gerente, Instagram e LinkedIn. Kits onboarding e brindes corporativos.",
   "canonicalUrl": "https://linktree.goodbox.com.br/",
   "credit": "© GoodBox",
   "links": [
@@ -11,6 +11,13 @@
       "description": "goodbox.com.br",
       "url": "https://goodbox.com.br",
       "icon": "globe"
+    },
+    {
+      "title": "Rastreio",
+      "description": "Acompanhe seu pedido",
+      "url": "https://rastreio.goodbox.com.br/",
+      "icon": "truck",
+      "variant": "action"
     },
     {
       "title": "Comercial",

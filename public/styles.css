@@ -141,6 +141,43 @@ body {
   color: var(--whatsapp);
 }
 
+.link--action {
+  background: #fff;
+  color: var(--bg-deep);
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(42, 24, 72, 0.28);
+}
+
+.link--action .link-desc {
+  color: rgba(74, 53, 112, 0.68);
+}
+
+.link--action .link-icon {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent));
+  color: #fff;
+}
+
+.link--action .link-arrow {
+  color: var(--bg-soft);
+  opacity: 0.85;
+}
+
+.link--action:hover,
+.link--action:focus-visible {
+  background: #fff;
+  border-color: transparent;
+  box-shadow: 0 16px 36px rgba(42, 24, 72, 0.38);
+}
+
+.link--action:hover .link-arrow,
+.link--action:focus-visible .link-arrow {
+  color: var(--accent-pink);
+}
+
+.link--action + .link {
+  margin-top: 0.45rem;
+}
+
 .link-icon svg {
   width: 20px;
   height: 20px;
