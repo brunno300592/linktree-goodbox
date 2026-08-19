@@ -40,7 +40,8 @@
       "title": "Site oficial",
       "description": "goodbox.com.br",
       "url": "https://goodbox.com.br",
-      "icon": "globe"
+      "icon": "globe",
+      "variant": "action"
     },
     {
       "title": "Rastreio",
