@@ -7,19 +7,6 @@
   "credit": "© GoodBox",
   "links": [
     {
-      "title": "Site oficial",
-      "description": "goodbox.com.br",
-      "url": "https://goodbox.com.br",
-      "icon": "globe"
-    },
-    {
-      "title": "Rastreio",
-      "description": "Acompanhe seu pedido",
-      "url": "https://rastreio.goodbox.com.br/",
-      "icon": "truck",
-      "variant": "action"
-    },
-    {
       "title": "Comercial",
       "description": "+55 11 91600-4685",
       "url": "https://wa.me/5511916004685",
@@ -48,6 +35,19 @@
       "description": "+55 11 92492-5250",
       "url": "https://wa.me/5511924925250",
       "icon": "whatsapp"
+    },
+    {
+      "title": "Site oficial",
+      "description": "goodbox.com.br",
+      "url": "https://goodbox.com.br",
+      "icon": "globe"
+    },
+    {
+      "title": "Rastreio",
+      "description": "Acompanhe seu pedido",
+      "url": "https://rastreio.goodbox.com.br/",
+      "icon": "truck",
+      "variant": "action"
     }
   ],
   "socials": [
