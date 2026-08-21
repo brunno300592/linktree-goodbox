@@ -100,11 +100,11 @@ body {
   gap: 0.9rem;
   padding: 0.95rem 1.1rem;
   text-decoration: none;
-  color: var(--ink);
-  background: var(--surface);
-  border: 1px solid var(--line);
+  color: var(--bg-deep);
+  background: #fff;
+  border: 1px solid transparent;
   border-radius: var(--radius);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(42, 24, 72, 0.28);
   transition:
     transform 0.22s ease,
     background 0.22s ease,
@@ -115,9 +115,9 @@ body {
 .link:hover,
 .link:focus-visible {
   transform: translateY(-2px);
-  background: var(--surface-hover);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: var(--shadow);
+  background: #fff;
+  border-color: transparent;
+  box-shadow: 0 16px 36px rgba(42, 24, 72, 0.38);
   outline: none;
 }
 
@@ -132,50 +132,18 @@ body {
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  background: rgba(74, 53, 112, 0.1);
+  color: var(--bg-deep);
 }
 
 .link[data-icon="whatsapp"] .link-icon {
-  background: rgba(37, 211, 102, 0.2);
+  background: rgba(37, 211, 102, 0.16);
   color: var(--whatsapp);
-}
-
-.link--action {
-  background: #fff;
-  color: var(--bg-deep);
-  border-color: transparent;
-  box-shadow: 0 12px 28px rgba(42, 24, 72, 0.28);
-}
-
-.link--action .link-desc {
-  color: rgba(74, 53, 112, 0.68);
 }
 
 .link--action .link-icon {
   background: linear-gradient(135deg, var(--accent-pink), var(--accent));
   color: #fff;
-}
-
-.link--action .link-arrow {
-  color: var(--bg-soft);
-  opacity: 0.85;
-}
-
-.link--action:hover,
-.link--action:focus-visible {
-  background: #fff;
-  border-color: transparent;
-  box-shadow: 0 16px 36px rgba(42, 24, 72, 0.38);
-}
-
-.link--action:hover .link-arrow,
-.link--action:focus-visible .link-arrow {
-  color: var(--accent-pink);
-}
-
-.link--action + .link {
-  margin-top: 0.45rem;
 }
 
 .link-icon svg {
@@ -200,7 +168,7 @@ body {
   display: block;
   margin-top: 0.15rem;
   font-size: 0.8rem;
-  color: var(--ink-muted);
+  color: rgba(74, 53, 112, 0.68);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -208,8 +176,8 @@ body {
 
 .link-arrow {
   flex: 0 0 auto;
-  color: var(--ink-muted);
-  opacity: 0.7;
+  color: var(--bg-soft);
+  opacity: 0.85;
   transition: transform 0.22s ease, opacity 0.22s ease, color 0.22s ease;
 }
 
@@ -217,7 +185,7 @@ body {
 .link:focus-visible .link-arrow {
   transform: translateX(3px);
   opacity: 1;
-  color: #fff;
+  color: var(--accent-pink);
 }
 
 .footer {
